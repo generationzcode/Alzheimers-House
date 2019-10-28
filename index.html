@@ -1,0 +1,100 @@
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/babel">
+  //class HeatSensorAndActuator extends React.Component{}
+  class Room extends React.Component {
+    constructor(props){
+      //props: x, y, bodyLength, bodyWidth, colorOfChoice
+      super(props);
+      this.state={bkColor:"black",clickedKitchen:false};
+      this.handleMouseLeave=this.handleMouseLeave.bind(this);
+      this.handleMouseEnter=this.handleMouseEnter.bind(this);
+      this.handleClick=this.handleClick.bind(this);
+      this.colorOfChoice="";
+      this.supposedToSay=""
+      if(this.props.specification=="kitchen"){
+        this.colorOfChoice="brown";
+        this.supposedToSay="fire switched on";
+      }
+      else if(this.props.specification=="bedroom"){
+        this.colorOfChoice="green";
+        this.supposedToSay="possibilty of head bang";
+      }
+      else if (this.props.specification=="toilet") {
+        this.colorOfChoice="white";
+        this.supposedToSay="possibility of slip"
+      }
+      else if (this.props.specification=="corridoor") {
+        this.colorOfChoice="white";
+        this.supposedToSay="patient possibly slipped"
+      }
+      else {
+        this.colorOfChoice="yellow";
+        this.supposedToSay="patient has possibly slipped"
+      }
+    }
+    handleClick(event){
+      alert(this.supposedToSay);
+      if(this.props.specification=="kitchen"){
+        this.setState({clickedKitchen:true})
+      }
+    }
+    handleMouseEnter(event){
+      this.setState({bkColor:this.colorOfChoice})
+    }
+    handleMouseLeave(event){
+      this.setState({bkColor:"black"})
+      if(this.props.specification=="kitchen" && this.state.clickedKitchen==true){
+        alert("fire switched off");
+        this.setState({clickedKitchen:false});
+      }
+    }
+    render(){
+      return (
+      <div style={{position:"absolute",left:this.props.x,top:this.props.y,height:this.props.bodyLength,width:this.props.bodyWidth,backgroundColor:this.state.bkColor,margin:"25px",border:"1px solid blue"}} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} onClick={this.handleClick} >
+
+      </div>
+      );
+    }
+
+  }
+
+
+  //class SoundSensor extends React.Component {}
+  //class LightSwitch extends React.Component {}
+  //class StairEndShow extends React.Component {}
+  class House extends React.Component {
+    constructor(props){
+      super(props);
+      this.handleMouseLeave=this.handleMouseLeave.bind(this);
+      this.handleMouseEnter=this.handleMouseEnter.bind(this);
+    }
+    handleMouseLeave(event){
+      alert("the patient has left the house");
+    }
+    handleMouseEnter(event){
+      alert("the patient has returned to the house");
+    }
+    render(){
+      return (
+      <div  onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handeMouseLeave}>
+        <Room x="20px" y="20px" bodyLength="300px" bodyWidth="300px" specification="bedroom"></Room>
+        <Room x="320px" y="20px" bodyLength="300px" bodyWidth="300px" specification="toilet"></Room>
+        <Room x="620px" y="20px" bodyLength="300px" bodyWidth="300px" specification="bedroom"></Room>
+        <Room x="20px" y="620px" bodyLength="300px" bodyWidth="300px" specification="kitchen"></Room>
+        <Room x="320px" y="620px" bodyLength="300px" bodyWidth="300px" specification="toilet"></Room>
+        <Room x="620px" y="620px" bodyLength="300px" bodyWidth="300px" specification="bedroom"></Room>
+        <Room x="20px" y="320px" bodyLength="300px" bodyWidth="900px" specification="corridoor"></Room>
+        <Room x="920px" y="20px" bodyLength="900px" bodyWidth="600px" specification="living room"></Room>
+      </div>
+      );
+    }
+
+  }
+ReactDOM.render(<House/>,document.getElementById("potty"))
+</script>
+<div id="potty">
+
+</div>
