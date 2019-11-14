@@ -1,0 +1,103 @@
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <style media="screen">
+    #container{
+      height:50%;
+      width:50%;
+      position:absolute;
+      left:5%;top:5%;
+      background-color:gray
+    }
+
+  </style>
+  <div id="root">
+
+  </div>
+
+<script type="text/babel">
+  class OldLady extends React.Component {
+    constructor(props){
+      super(props);
+      this.state={
+        pos:[1,1]
+      };
+
+    }
+    move(){
+      const speed=Math.floor(Math.random()*11)-4;
+      const newPos=this.state.pos.slice();
+      newPos[Math.round(Math.random()*1)] += speed;
+      if (newPos[0] > 30){
+        newPos[0] -= 10;
+      }
+      else if (newPos[0] < -30){
+        newPos[0] +=10;
+      }
+      else if(newPos[1] > 100){
+        newPos[1]-=10;
+      }
+      else if(newPos[1] < 0){
+        newPos[1]+=10;
+      }
+      this.setState({
+        pos:newPos,
+      });
+    }
+    componentDidMount(){
+      this.timerID = setInterval(
+      ()=>this.move(),
+      200)
+    }
+    componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+  render(){
+      return(
+
+      <div id="container"  >
+        <span>x:{this.state.pos[0]},y:{this.state.pos[1]}</span>
+        <div style={{height:"100px",width:"5px",position:"absolute",left:"170px",top:"200px",backgroundColor:"blue"}}>
+
+        </div>
+        <div style={{height:"5px",width:"70px",position:"absolute",left:"170px",top:"200px",backgroundColor:"blue"}}>
+
+        </div>
+        <div style={{height:"100px",width:"5px",position:"absolute",left:"240px",top:"200px",backgroundColor:"blue"}}>
+
+        </div>
+        <div style={{height:"5px",width:"75px",position:"absolute",left:"170px",top:"300px",backgroundColor:"blue"}}>
+
+        </div>
+        <div style={{height:"5px",width:"30px",position:"absolute",left:"170px",top:"270px",backgroundColor:"blue"}}>
+
+        </div>
+        <div style={{height:"5px",width:"30px",position:"absolute",left:"215px",top:"270px",backgroundColor:"blue"}}>
+
+        </div>
+
+
+        <div style={{height:"5px",width:"30px",position:"absolute",left:"170px",top:"240px",backgroundColor:"blue"}}>
+
+        </div>
+        <div style={{height:"5px",width:"30px",position:"absolute",left:"215px",top:"230px",backgroundColor:"blue"}}>
+
+        </div>
+
+
+        <div style={{height:"75px",width:"5px",position:"absolute",left:"200px",top:"200px",backgroundColor:"blue"}}>
+
+        </div>
+
+        <div style={{height:"75px",width:"5px",position:"absolute",left:"215px",top:"200px",backgroundColor:"blue"}}>
+
+        </div>
+        <div id="lady" style={{height:"10px",width:"10px",backgroundColor:"red",position:"absolute",left:this.state.pos[0]+200+'px',top:this.state.pos[1]+200+'px'}}>
+
+        </div>
+      </div>
+      )
+    }
+  }
+  ReactDOM.render(<OldLady/>,document.getElementById("root"));
+</script>
