@@ -9,7 +9,6 @@
       left:5%;top:5%;
       background-color:gray
     }
-
   </style>
   <div id="root">
 
@@ -22,7 +21,6 @@
       this.state={
         pos:[1,1]
       };
-
     }
     move(){
       const speed=Math.floor(Math.random()*11)-4;
@@ -54,37 +52,29 @@
   }
   render(){
       return(
-
       <div id="container"  >
         <span>x:{this.state.pos[0]},y:{this.state.pos[1]}</span>
-        
-        // living room
-        <div style={{height:"428px", width:"833px", position:"absolute", left:"0px", top:"428px", backgroundColor:"blue"}}></div>
-        
-         // bedroom one
-        <div style={{height:"269px", width:"422px", position:"absolute", left:"0px", top:"697px", backgroundColor:"blue"}}></div>
-
-        // toilet one
-        <div style={{height:"191px", width:"322px", position:"absolute", left:"0px", top:"888px", backgroundColor:"blue"}}></div>
-
-        // kitchen
-        <div style={{height:"460px", width:"322px", position:"absolute", left:"0px", top:"1348px", backgroundColor:"blue"}}></div>
-
-        // hallway
-        <div style={{height:"920px", width:"155px", position:"absolute", left:"322px", top:"1348px", backgroundColor:"blue"}}></div>
-
-        // bedroom two
-        <div style={{height:"340px", width:"356px", position:"absolute", left:"477px", top:"1348px", backgroundColor:"blue"}}></div>
-
-        // toilet two
-        <div style={{height:"229px", width:"356px", position:"absolute", left:"477px", top:"1008px", backgroundColor:"blue"}}></div>
-        
-        // bedroom three
-        <div style={{height:"351px", width:"356px", position:"absolute", left:"477px", top:"779px", backgroundColor:"blue"}}></div>
-
-        // walker
+        <div style={{height:"100px",width:"5px",position:"absolute",left:"170px",top:"200px",backgroundColor:"blue"}}>
+        </div>
+        <div style={{height:"5px",width:"70px",position:"absolute",left:"170px",top:"200px",backgroundColor:"blue"}}>
+        </div>
+        <div style={{height:"100px",width:"5px",position:"absolute",left:"240px",top:"200px",backgroundColor:"blue"}}>
+        </div>
+        <div style={{height:"5px",width:"75px",position:"absolute",left:"170px",top:"300px",backgroundColor:"blue"}}>
+        </div>
+        <div style={{height:"5px",width:"30px",position:"absolute",left:"170px",top:"270px",backgroundColor:"blue"}}>
+        </div>
+        <div style={{height:"5px",width:"30px",position:"absolute",left:"215px",top:"270px",backgroundColor:"blue"}}>
+        </div>
+        <div style={{height:"5px",width:"30px",position:"absolute",left:"170px",top:"240px",backgroundColor:"blue"}}>
+        </div>
+        <div style={{height:"5px",width:"30px",position:"absolute",left:"215px",top:"230px",backgroundColor:"blue"}}>
+        </div>
+        <div style={{height:"75px",width:"5px",position:"absolute",left:"200px",top:"200px",backgroundColor:"blue"}}>
+        </div>
+        <div style={{height:"75px",width:"5px",position:"absolute",left:"215px",top:"200px",backgroundColor:"blue"}}>
+        </div>
         <div id="lady" style={{height:"10px",width:"10px",backgroundColor:"red",position:"absolute",left:this.state.pos[0]+200+'px',top:this.state.pos[1]+200+'px'}}>
-
         </div>
       </div>
       )
